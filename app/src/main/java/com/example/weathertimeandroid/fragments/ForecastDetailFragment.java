@@ -4,108 +4,116 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.weathertimeandroid.R;
+import com.example.weathertimeandroid.models.Datum;
+import com.example.weathertimeandroid.utilities.AndroidHelper;
+import com.example.weathertimeandroid.utilities.DateTimeHelper;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ForecastDetailFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ForecastDetailFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.List;
+
+
 public class ForecastDetailFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
-
-    public ForecastDetailFragment() {
-        // Required empty public constructor
-    }
+    View view;
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ForecastDetailFragment.
+     * Creates a new instance of ForecastDetailFragment. This is primarily used so that we can pass the index (int selectedDay).
+     * @param forecast All forecast data. This is narrowed down by using selectedDay.
+     * @param selectedDay Used to show the day selected by the user.
+     * @return ForecastDetailFragment
      */
-    // TODO: Rename and change types and number of parameters
-    public static ForecastDetailFragment newInstance(String param1, String param2) {
+    public static ForecastDetailFragment newInstance(List<Datum> forecast, int selectedDay) {
+
+        // Create a bundle with all weather data so that we can access it when the view is being created below.
+        Bundle args = createBundle(forecast, selectedDay);
+
+        // Create the new ForecastDetailFragment, set it's argument and then return it.
         ForecastDetailFragment fragment = new ForecastDetailFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
 
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_forecast_detail, container, false);
-    }
+        // Setup the view so that we can access it's components.
+        if(view == null) this.view = inflater.inflate(R.layout.fragment_forecast_detail, container, true);
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
+        // Populate all the text views on the fragment with the correct data.
+        populateWeatherData();
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+        return view;
     }
 
     /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
+     * Pulls all arguments and then pouplates the text views with the correct data.
      */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    private void populateWeatherData() {
+
+        // Get all of our arguments that were populated earlier.
+        Bundle args = getArguments();
+
+        /**
+         * Setup all of our text views.
+         */
+        TextView detailDate         = (TextView) view.findViewById(R.id.text_detail_date);
+        TextView condition          = (TextView) view.findViewById(R.id.text_detail_condition);
+        ImageView weatherIcon = (ImageView) view.findViewById(R.id.weather_icon_detail);
+        TextView lowTemp            = (TextView) view.findViewById(R.id.text_detail_low);
+        TextView highTemp           = (TextView) view.findViewById(R.id.text_detail_high);
+
+        /**
+         * Format all of our data correctly.
+         */
+        String dateString           = DateTimeHelper.convertEpochToString(args.getInt("time"), "EEEE", "GMT-6:00");
+        String conditionString      = args.getString("condition");
+        String weatherIconResource  = getString(AndroidHelper.getStringIdentifier(getActivity(), args.getString("icon")));
+        long lowTempLong            = Math.round(Double.valueOf(args.getString("low")));
+        long highTempLong           = Math.round(Double.valueOf(args.getString("high")));
+
+
+        /**
+         * Populate data from the bundle into the text views.
+         */
+        detailDate.setText(dateString);
+        condition.setText(conditionString);
+       // ImageView.setIconResource(weatherIconResource);
+        lowTemp.setText(getString(R.string.weather_temperature, lowTempLong));
+        highTemp.setText(getString(R.string.weather_temperature, highTempLong));
+    }
+
+    /**
+     * A helper to create our bundle that is used within onCreateView.
+     * @param forecast
+     * @param selectedDay
+     * @return Bundle
+     */
+    private static Bundle createBundle(List<Datum> forecast, int selectedDay) {
+        // Create a bundle so that we can access it when the view is being created below.
+        Bundle bundle = new Bundle();
+
+        // Filter out the selected day from the forecast.
+        Datum dailyForecast = forecast.get(selectedDay);
+
+        /**
+         * Build out our bundle with weather data.
+         */
+        bundle.putInt("time", dailyForecast.getTime());
+        bundle.putString("condition", dailyForecast.getSummary());
+        bundle.putString("icon", "wi_forecast_io_" + dailyForecast.getIcon().replace("-", "_"));
+        bundle.putString("low", String.valueOf(dailyForecast.getTemperatureMin()));
+        bundle.putString("high", String.valueOf(dailyForecast.getTemperatureMax()));
+
+        return bundle;
     }
 }
