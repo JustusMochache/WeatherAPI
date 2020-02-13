@@ -8,7 +8,9 @@
     <string name="setIconResource">weatherIconResource</string>
 
 
-    <string name="dark_sky_api">getString</string>
+<!--    add string for open weather-->
+
+
 
 
     <!-- Strings related to Settings -->
