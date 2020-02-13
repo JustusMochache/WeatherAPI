@@ -71,7 +71,7 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
         }
 
         public void bindWeatherForecast(ForecastList forecastList){
-            Picasso.with(mContext).load(forecastList.getWeather().get(0).getIcon()).into(mWeatherImageView);
+            Picasso.get().load(forecastList.getWeather().get(0).getIcon()).into(mWeatherImageView);
             mMainWeatherTextView.setText(forecastList.getWeather().get(0).getMain());
             mMaintemparatureTextView.setText("Average Temperatures of: "+forecastList.getMain().getTemp());
             mTimeTextView.setText(forecastList.getReadableDate());

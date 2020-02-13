@@ -82,7 +82,7 @@ public class WeatherDetailFragment extends Fragment implements View.OnClickListe
         ButterKnife.bind(this, view);
 
 
-        Picasso.with(view.getContext()).load(weatherForecast.getWeather().get(0).getIcon()).into(mIconView);
+        Picasso.get().load(weatherForecast.getWeather().get(0).getIcon()).into(mIconView);
         mLocationCoordinates.setText(city.getCoord().getCoordinates());
         mFragmentTemparatureTextView.setText(weatherForecast.getMain().getTemp());
         mDescriptionTextView.setText(weatherForecast.getWeather().get(0).getDescription());

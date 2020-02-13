@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onClick(View v){
-        if(v == mCheckForecast){
+    public void onClick(View v) {
+        if (v == mCheckForecast) {
             Intent intent = new Intent(MainActivity.this, WeatherListActivity.class);
             String mLocation = mLocationEditText.getText().toString();
             Toast.makeText(MainActivity.this, "Location Nearby", Toast.LENGTH_LONG).show();
@@ -49,5 +49,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
 
-
+    }
 }

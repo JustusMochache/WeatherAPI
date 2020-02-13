@@ -4,7 +4,7 @@ import com.example.weathertimeandroid.BuildConfig;
 
 public class Constants {
 
-    public static final String ACCESS_KEY= BuildConfig.ACCESS_KEY;
+    public static final String ACCESS_KEY= BuildConfig.API_KEY;
     public static final String ACCESS_BASE_URL = "http://api.openweathermap.org/data/2.5";
     public static final String ACCESS_LOCATION_QUERY_PARAMETER = "q";
     public static final String UNITS = "units";
