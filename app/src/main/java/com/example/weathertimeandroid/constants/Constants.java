@@ -1,4 +1,4 @@
 package com.example.weathertimeandroid.constants;
 
-public class constants {
+public class Constants {
 }
