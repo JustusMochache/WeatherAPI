@@ -6,4 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".ui.WeatherDetailActivity">
 
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/viewPager"
+        android:background="@drawable/night">
+
+        <androidx.viewpager.widget.PagerTabStrip
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pageHeader"
+            android:layout_gravity="top"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp">
+
+        </androidx.viewpager.widget.PagerTabStrip>
+
+    </androidx.viewpager.widget.ViewPager>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
