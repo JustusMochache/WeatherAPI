@@ -1,61 +1,65 @@
+
 package com.example.weathertimeandroid.models;
 
+import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import org.parceler.Parcel;
-
-
-@Parcel
-
-public class Main {
+public class Main implements Serializable
+{
 
     @SerializedName("temp")
     @Expose
-    Double temp;
+    private Double temp;
+    @SerializedName("feels_like")
+    @Expose
+    private Double feelsLike;
     @SerializedName("temp_min")
     @Expose
-    Double tempMin;
+    private Double tempMin;
     @SerializedName("temp_max")
     @Expose
-    Double tempMax;
+    private Double tempMax;
     @SerializedName("pressure")
     @Expose
-    Double pressure;
+    private Integer pressure;
     @SerializedName("sea_level")
     @Expose
-    Double seaLevel;
+    private Integer seaLevel;
     @SerializedName("grnd_level")
     @Expose
-    Double grndLevel;
+    private Integer grndLevel;
     @SerializedName("humidity")
     @Expose
-    Long humidity;
+    private Integer humidity;
     @SerializedName("temp_kf")
     @Expose
-    transient Long tempKf;
+    private Integer tempKf;
+    private final static long serialVersionUID = 8749640293513047160L;
 
     /**
      * No args constructor for use in serialization
-     *
+     * 
      */
     public Main() {
     }
 
     /**
-     *
+     * 
+     * @param feelsLike
+     * @param tempMax
+     * @param temp
      * @param seaLevel
      * @param humidity
      * @param pressure
-     * @param grndLevel
-     * @param tempMax
-     * @param temp
      * @param tempKf
+     * @param grndLevel
      * @param tempMin
      */
-    public Main(Double temp, Double tempMin, Double tempMax, Double pressure, Double seaLevel, Double grndLevel, Long humidity, Long tempKf) {
+    public Main(Double temp, Double feelsLike, Double tempMin, Double tempMax, Integer pressure, Integer seaLevel, Integer grndLevel, Integer humidity, Integer tempKf) {
         super();
         this.temp = temp;
+        this.feelsLike = feelsLike;
         this.tempMin = tempMin;
         this.tempMax = tempMax;
         this.pressure = pressure;
@@ -65,14 +69,20 @@ public class Main {
         this.tempKf = tempKf;
     }
 
-    public String getTemp() {
-        String tempDouble = temp.toString();
-        String tempString = tempDouble + " °C";
-        return tempString;
+    public Double getTemp() {
+        return temp;
     }
 
     public void setTemp(Double temp) {
         this.temp = temp;
+    }
+
+    public Double getFeelsLike() {
+        return feelsLike;
+    }
+
+    public void setFeelsLike(Double feelsLike) {
+        this.feelsLike = feelsLike;
     }
 
     public Double getTempMin() {
@@ -91,45 +101,44 @@ public class Main {
         this.tempMax = tempMax;
     }
 
-    public Double getPressure() {
+    public Integer getPressure() {
         return pressure;
     }
 
-    public void setPressure(Double pressure) {
+    public void setPressure(Integer pressure) {
         this.pressure = pressure;
     }
 
-    public Double getSeaLevel() {
+    public Integer getSeaLevel() {
         return seaLevel;
     }
 
-    public void setSeaLevel(Double seaLevel) {
+    public void setSeaLevel(Integer seaLevel) {
         this.seaLevel = seaLevel;
     }
 
-    public Double getGrndLevel() {
+    public Integer getGrndLevel() {
         return grndLevel;
     }
 
-    public void setGrndLevel(Double grndLevel) {
+    public void setGrndLevel(Integer grndLevel) {
         this.grndLevel = grndLevel;
     }
 
-    public Long getHumidity() {
+    public Integer getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(Long humidity) {
+    public void setHumidity(Integer humidity) {
         this.humidity = humidity;
     }
 
-    public Long getTempKf() {
+    public Integer getTempKf() {
         return tempKf;
     }
 
-    public void setTempKf(Long tempKf) {
+    public void setTempKf(Integer tempKf) {
         this.tempKf = tempKf;
     }
-
 
 }

@@ -11,8 +11,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.weathertimeandroid.R;
-import com.example.weathertimeandroid.models.Forecast;
-import com.example.weathertimeandroid.models.ForecastList;
+import com.example.weathertimeandroid.models.WeatherSearchResponse;
 import com.example.weathertimeandroid.ui.WeatherDetailActivity;
 import com.squareup.picasso.Picasso;
 
@@ -25,12 +24,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.WeatherViewHolder> {
-    private List<ForecastList> mWeatherForecasts = new ArrayList<>();
-    private Forecast mForecast;
+    private List<com.example.weathertimeandroid.models.List> mWeatherForecasts = new ArrayList<>();
+    private WeatherSearchResponse mForecast;
 
     private Context mContext;
 
-    public WeatherListAdapter(Context context, List<ForecastList> weatherForecasts, Forecast forecast){
+    public WeatherListAdapter(Context context, List<com.example.weathertimeandroid.models.List> weatherForecasts, WeatherSearchResponse forecast){
         mContext = context;
         mWeatherForecasts = weatherForecasts;
         mForecast = forecast;
@@ -70,11 +69,11 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
             itemView.setOnClickListener(this);
         }
 
-        public void bindWeatherForecast(ForecastList forecastList){
-            Picasso.get().load(forecastList.getWeather().get(0).getIcon()).into(mWeatherImageView);
+        public void bindWeatherForecast(com.example.weathertimeandroid.models.List forecastList){
+            //Picasso.get().load(forecastList.g()).into(mWeatherImageView);
             mMainWeatherTextView.setText(forecastList.getWeather().get(0).getMain());
-            mMaintemparatureTextView.setText("Average Temperatures of: "+forecastList.getMain().getTemp());
-            mTimeTextView.setText(forecastList.getReadableDate());
+            mMaintemparatureTextView.setText("Average Temperatures of: "+forecastList.toString());
+            mTimeTextView.setText(forecastList.getDt());
         }
 
         @Override

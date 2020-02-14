@@ -5,26 +5,26 @@ import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Rain implements Serializable
+public class Snow implements Serializable
 {
 
     @SerializedName("3h")
     @Expose
     private Double _3h;
-    private final static long serialVersionUID = 561001845539747522L;
+    private final static long serialVersionUID = 2829621324978588266L;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public Rain() {
+    public Snow() {
     }
 
     /**
      * 
      * @param _3h
      */
-    public Rain(Double _3h) {
+    public Snow(Double _3h) {
         super();
         this._3h = _3h;
     }

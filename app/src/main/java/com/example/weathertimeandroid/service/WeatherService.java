@@ -1,11 +1,8 @@
 package com.example.weathertimeandroid.service;
 
-import android.app.Service;
-import android.content.Intent;
-import android.os.IBinder;
-
 import com.example.weathertimeandroid.constants.Constants;
-import com.example.weathertimeandroid.models.Forecast;
+import com.example.weathertimeandroid.models.Weather;
+import com.example.weathertimeandroid.models.WeatherSearchResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -40,15 +37,15 @@ public class WeatherService {
     }
 
 
-    public Forecast processResults(Response response){
-        Forecast weatherForecasts = null;
+    public WeatherSearchResponse processResults(Response response){
+        WeatherSearchResponse weatherForecasts = null;
         try{
             String jsonData = response.body().string();
             if (response.isSuccessful()){
 
                 JSONObject fullForecastJSON = new JSONObject(jsonData);
                 Gson gson = new GsonBuilder().create();
-                weatherForecasts = gson.fromJson(fullForecastJSON.toString(), Forecast.class);
+                weatherForecasts = gson.fromJson(fullForecastJSON.toString(), WeatherSearchResponse.class);
             }
         }catch (IOException e){
             e.printStackTrace();

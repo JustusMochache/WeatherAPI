@@ -4,13 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
-import android.os.Parcel;
 
 import com.example.weathertimeandroid.R;
 import com.example.weathertimeandroid.adapters.WeatherPagerAdapter;
 import com.example.weathertimeandroid.models.City;
-import com.example.weathertimeandroid.models.Forecast;
-import com.example.weathertimeandroid.models.ForecastList;
+import com.example.weathertimeandroid.models.WeatherSearchResponse;
 
 import org.parceler.Parcels;
 
@@ -27,8 +25,8 @@ public class WeatherDetailActivity extends AppCompatActivity {
     ViewPager mViewpager;
     private WeatherPagerAdapter adapterViewpager;
     City mCity;
-    Forecast mForecast;
-    List<ForecastList> mWeatherForecasts =new ArrayList<>();
+    WeatherSearchResponse mForecast;
+    List<com.example.weathertimeandroid.models.List> mWeatherForecasts =new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

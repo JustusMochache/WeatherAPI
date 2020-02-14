@@ -9,8 +9,7 @@ import android.os.Bundle;
 
 import com.example.weathertimeandroid.R;
 import com.example.weathertimeandroid.adapters.WeatherListAdapter;
-import com.example.weathertimeandroid.models.Forecast;
-import com.example.weathertimeandroid.models.ForecastList;
+import com.example.weathertimeandroid.models.WeatherSearchResponse;
 import com.example.weathertimeandroid.service.WeatherService;
 
 import java.io.IOException;
@@ -26,7 +25,7 @@ import okhttp3.Response;
 public class WeatherListActivity extends AppCompatActivity {
 
 
-    public List<ForecastList> mWeatherForecasts = new ArrayList<>();
+    public List<com.example.weathertimeandroid.models.List> mWeatherForecasts = new ArrayList<>();
     public static final String TAG = WeatherListActivity.class.getSimpleName();
     @BindView(R.id.recyclerView)
     RecyclerView mRecycleView;
@@ -53,12 +52,12 @@ public class WeatherListActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                final Forecast forecast = weatherService.processResults(response);
-                mWeatherForecasts = forecast.getForecastList();
+                 WeatherSearchResponse forecast = weatherService.processResults(response);
+                mWeatherForecasts = forecast.getList();
                 WeatherListActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mAdapter = new WeatherListAdapter(getApplicationContext(), mWeatherForecasts, forecast);
+                        mAdapter = new WeatherListAdapter(WeatherListActivity.this,mWeatherForecasts,forecast);
                         mRecycleView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(WeatherListActivity.this);
                         mRecycleView.setLayoutManager(layoutManager);

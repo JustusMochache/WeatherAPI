@@ -1,42 +1,42 @@
+
 package com.example.weathertimeandroid.models;
 
-
-import com.example.weathertimeandroid.constants.Constants;
+import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import org.parceler.Parcel;
+public class Weather implements Serializable
+{
 
-@Parcel
-public class Weather {
     @SerializedName("id")
     @Expose
-    Long id;
+    private Integer id;
     @SerializedName("main")
     @Expose
-    String main;
+    private String main;
     @SerializedName("description")
     @Expose
-    String description;
+    private String description;
     @SerializedName("icon")
     @Expose
-    String icon;
+    private String icon;
+    private final static long serialVersionUID = -2592237990522891125L;
 
     /**
      * No args constructor for use in serialization
-     *
+     * 
      */
     public Weather() {
     }
 
     /**
-     *
-     * @param id
+     * 
      * @param icon
      * @param description
      * @param main
+     * @param id
      */
-    public Weather(Long id, String main, String description, String icon) {
+    public Weather(Integer id, String main, String description, String icon) {
         super();
         this.id = id;
         this.main = main;
@@ -44,11 +44,11 @@ public class Weather {
         this.icon = icon;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -69,16 +69,11 @@ public class Weather {
     }
 
     public String getIcon() {
-        String iconId = icon;
-        String iconUrl = Constants.WEATHER_ICON_BASEURL + iconId + Constants.ICON_EXTENSION;
-        return iconUrl;
+        return icon;
     }
 
     public void setIcon(String icon) {
         this.icon = icon;
     }
-
-
-
 
 }

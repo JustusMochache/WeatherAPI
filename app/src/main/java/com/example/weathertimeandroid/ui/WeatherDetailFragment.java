@@ -1,9 +1,7 @@
 package com.example.weathertimeandroid.ui;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,13 +12,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.weathertimeandroid.R;
-import com.example.weathertimeandroid.constants.Constants;
 import com.example.weathertimeandroid.models.City;
-import com.example.weathertimeandroid.models.Forecast;
-import com.example.weathertimeandroid.models.ForecastList;
+import com.example.weathertimeandroid.models.List;
+import com.example.weathertimeandroid.models.WeatherSearchResponse;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -46,12 +42,12 @@ public class WeatherDetailFragment extends Fragment implements View.OnClickListe
     @BindView(R.id.button)
     Button mSaveButton;
 
-    private Forecast forecast;
-    private ForecastList weatherForecast;
+    private WeatherSearchResponse forecast;
+    private List weatherForecast;
     private City city;
 
 
-    public static androidx.fragment.app.Fragment newInstance(ForecastList mForecastList, City mCity, Forecast mForecast){
+    public static androidx.fragment.app.Fragment newInstance(List mForecastList, City mCity, WeatherSearchResponse mForecast){
         WeatherDetailFragment weatherDetailFragment = new WeatherDetailFragment();
         Bundle args = new Bundle();
         args.putParcelable("forecast", Parcels.wrap(mForecast));
@@ -83,11 +79,11 @@ public class WeatherDetailFragment extends Fragment implements View.OnClickListe
 
 
         Picasso.get().load(weatherForecast.getWeather().get(0).getIcon()).into(mIconView);
-        mLocationCoordinates.setText(city.getCoord().getCoordinates());
-        mFragmentTemparatureTextView.setText(weatherForecast.getMain().getTemp());
+        mLocationCoordinates.setText(city.getCoord().toString());
+        mFragmentTemparatureTextView.setText(Double.toString(weatherForecast.getMain().getTemp()));
         mDescriptionTextView.setText(weatherForecast.getWeather().get(0).getDescription());
         mCityNameTextView.setText(city.getName());
-        mPopulationTextView.setText(city.getPopulation());
+        mPopulationTextView.setText(city.getCountry());
         mMinimumTemperature.setText(Double.toString(weatherForecast.getMain().getTempMin()));
         mMaximumTemperatureTextView.setText(Double.toString(weatherForecast.getMain().getTempMax()));
         mWindSpeedTextView.setText(Double.toString(weatherForecast.getWind().getSpeed()));

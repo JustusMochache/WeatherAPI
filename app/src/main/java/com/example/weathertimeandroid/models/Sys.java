@@ -1,27 +1,27 @@
+
 package com.example.weathertimeandroid.models;
 
+import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import org.parceler.Parcel;
-
-@Parcel
-public class Sys {
-
+public class Sys implements Serializable
+{
 
     @SerializedName("pod")
     @Expose
-    String pod;
+    private String pod;
+    private final static long serialVersionUID = -8565533078403473912L;
 
     /**
      * No args constructor for use in serialization
-     *
+     * 
      */
     public Sys() {
     }
 
     /**
-     *
+     * 
      * @param pod
      */
     public Sys(String pod) {

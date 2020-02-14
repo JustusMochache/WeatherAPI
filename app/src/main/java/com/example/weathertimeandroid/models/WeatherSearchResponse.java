@@ -1,52 +1,51 @@
+
 package com.example.weathertimeandroid.models;
 
+import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import org.parceler.Parcel;
-
-
-@Parcel
-public class Forecast {
-
+public class WeatherSearchResponse implements Serializable
+{
 
     @SerializedName("cod")
     @Expose
-    String cod;
+    private String cod;
     @SerializedName("message")
     @Expose
-    Double message;
+    private Double message;
     @SerializedName("cnt")
     @Expose
-    Long cnt;
+    private Double cnt;
     @SerializedName("list")
     @Expose
-    java.util.List<ForecastList> forecastList = null;
+    private java.util.List<com.example.weathertimeandroid.models.List> list = null;
     @SerializedName("city")
     @Expose
-    City city;
+    private City city;
+    private final static long serialVersionUID = 5062164582072266725L;
 
     /**
      * No args constructor for use in serialization
-     *
+     * 
      */
-    public Forecast() {
+    public WeatherSearchResponse() {
     }
 
     /**
-     *
-     * @param message
+     * 
+     * @param city
      * @param cnt
      * @param cod
-     * @param forecastList
-     * @param city
+     * @param message
+     * @param list
      */
-    public Forecast(String cod, Double message, Long cnt, java.util.List<ForecastList> forecastList, City city) {
+    public WeatherSearchResponse(String cod, Double message, Double cnt, java.util.List<com.example.weathertimeandroid.models.List> list, City city) {
         super();
         this.cod = cod;
         this.message = message;
         this.cnt = cnt;
-        this.forecastList = forecastList;
+        this.list = list;
         this.city = city;
     }
 
@@ -66,20 +65,20 @@ public class Forecast {
         this.message = message;
     }
 
-    public Long getCnt() {
+    public Double getCnt() {
         return cnt;
     }
 
-    public void setCnt(Long cnt) {
+    public void setCnt(Double cnt) {
         this.cnt = cnt;
     }
 
-    public java.util.List<ForecastList> getForecastList() {
-        return forecastList;
+    public java.util.List<com.example.weathertimeandroid.models.List> getList() {
+        return list;
     }
 
-    public void setForecastList(java.util.List<ForecastList> forecastList) {
-        this.forecastList = forecastList;
+    public void setList(java.util.List<com.example.weathertimeandroid.models.List> list) {
+        this.list = list;
     }
 
     public City getCity() {
@@ -89,6 +88,5 @@ public class Forecast {
     public void setCity(City city) {
         this.city = city;
     }
-
 
 }

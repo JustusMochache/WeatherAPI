@@ -1,30 +1,30 @@
+
 package com.example.weathertimeandroid.models;
 
+import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import org.parceler.Parcel;
-
-@Parcel
-
-public class Coord {
+public class Coord implements Serializable
+{
 
     @SerializedName("lat")
     @Expose
-    Double lat;
+    private Double lat;
     @SerializedName("lon")
     @Expose
-    Double lon;
+    private Double lon;
+    private final static long serialVersionUID = -3004412514726832587L;
 
     /**
      * No args constructor for use in serialization
-     *
+     * 
      */
     public Coord() {
     }
 
     /**
-     *
+     * 
      * @param lon
      * @param lat
      */
@@ -49,13 +49,5 @@ public class Coord {
     public void setLon(Double lon) {
         this.lon = lon;
     }
-
-    public String getCoordinates(){
-        String lon = getLon().toString();
-        String lat = getLat().toString();
-        String coordinates = "Pin location"+"\n"+"("+lat+","+lon+")";
-        return coordinates;
-    }
-
 
 }

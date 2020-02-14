@@ -1,85 +1,79 @@
+
 package com.example.weathertimeandroid.models;
 
+import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import org.parceler.Parcel;
-
-import java.text.SimpleDateFormat;
-
-
-@Parcel
-
-public class ForecastList {
-
+public class List implements Serializable
+{
 
     @SerializedName("dt")
     @Expose
-    Long dt;
+    private Integer dt;
     @SerializedName("main")
     @Expose
-    Main main;
+    private Main main;
     @SerializedName("weather")
     @Expose
-    java.util.List<Weather> weather = null;
+    private java.util.List<Weather> weather = null;
     @SerializedName("clouds")
     @Expose
-    Clouds clouds;
+    private Clouds clouds;
     @SerializedName("wind")
     @Expose
-    Wind wind;
-    @SerializedName("rain")
-    @Expose
-    Rain rain;
+    private Wind wind;
     @SerializedName("sys")
     @Expose
-    Sys sys;
+    private Sys sys;
     @SerializedName("dt_txt")
     @Expose
-    String dtTxt;
+    private String dtTxt;
+    @SerializedName("snow")
+    @Expose
+    private Snow snow;
+    @SerializedName("rain")
+    @Expose
+    private Rain rain;
+    private final static long serialVersionUID = 1157314481326827651L;
 
     /**
      * No args constructor for use in serialization
-     *
+     * 
      */
-    public ForecastList() {
+    public List() {
     }
 
     /**
-     *
-     * @param clouds
+     * 
      * @param dt
-     * @param wind
-     * @param sys
+     * @param rain
+     * @param snow
      * @param dtTxt
      * @param weather
-     * @param rain
      * @param main
+     * @param clouds
+     * @param sys
+     * @param wind
      */
-    public ForecastList(Long dt, Main main, java.util.List<Weather> weather, Clouds clouds, Wind wind, Rain rain, Sys sys, String dtTxt) {
+    public List(Integer dt, Main main, java.util.List<Weather> weather, Clouds clouds, Wind wind, Sys sys, String dtTxt, Snow snow, Rain rain) {
         super();
         this.dt = dt;
         this.main = main;
         this.weather = weather;
         this.clouds = clouds;
         this.wind = wind;
-        this.rain = rain;
         this.sys = sys;
         this.dtTxt = dtTxt;
+        this.snow = snow;
+        this.rain = rain;
     }
 
-    public String getReadableDate() {
-        Long timestamp = dt*1000;
-        SimpleDateFormat sdf = new SimpleDateFormat("MMMM d, yyyy 'at' h:mm a");
-        String date = sdf.format(timestamp);
-        return date;
-    }
-
-    public Long getDt() {
+    public Integer getDt() {
         return dt;
     }
 
-    public void setDt(Long dt) {
+    public void setDt(Integer dt) {
         this.dt = dt;
     }
 
@@ -115,14 +109,6 @@ public class ForecastList {
         this.wind = wind;
     }
 
-    public Rain getRain() {
-        return rain;
-    }
-
-    public void setRain(Rain rain) {
-        this.rain = rain;
-    }
-
     public Sys getSys() {
         return sys;
     }
@@ -139,6 +125,20 @@ public class ForecastList {
         this.dtTxt = dtTxt;
     }
 
+    public Snow getSnow() {
+        return snow;
+    }
 
+    public void setSnow(Snow snow) {
+        this.snow = snow;
+    }
+
+    public Rain getRain() {
+        return rain;
+    }
+
+    public void setRain(Rain rain) {
+        this.rain = rain;
+    }
 
 }

@@ -1,34 +1,34 @@
+
 package com.example.weathertimeandroid.models;
 
+import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import org.parceler.Parcel;
-
-@Parcel
-public class Wind {
-
+public class Wind implements Serializable
+{
 
     @SerializedName("speed")
     @Expose
-    Double speed;
+    private Double speed;
     @SerializedName("deg")
     @Expose
-    Double deg;
+    private Integer deg;
+    private final static long serialVersionUID = -2149684502937452340L;
 
     /**
      * No args constructor for use in serialization
-     *
+     * 
      */
     public Wind() {
     }
 
     /**
-     *
-     * @param speed
+     * 
      * @param deg
+     * @param speed
      */
-    public Wind(Double speed, Double deg) {
+    public Wind(Double speed, Integer deg) {
         super();
         this.speed = speed;
         this.deg = deg;
@@ -42,13 +42,12 @@ public class Wind {
         this.speed = speed;
     }
 
-    public Double getDeg() {
+    public Integer getDeg() {
         return deg;
     }
 
-    public void setDeg(Double deg) {
+    public void setDeg(Integer deg) {
         this.deg = deg;
     }
-
 
 }

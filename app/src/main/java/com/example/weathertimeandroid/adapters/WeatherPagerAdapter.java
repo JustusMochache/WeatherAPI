@@ -5,19 +5,18 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.weathertimeandroid.models.City;
-import com.example.weathertimeandroid.models.Forecast;
-import com.example.weathertimeandroid.models.ForecastList;
+import com.example.weathertimeandroid.models.WeatherSearchResponse;
 import com.example.weathertimeandroid.ui.WeatherDetailFragment;
 
 import java.util.List;
 
 public class WeatherPagerAdapter extends FragmentPagerAdapter {
 
-    private List<ForecastList> mWeatherForecasts;
+    private List<com.example.weathertimeandroid.models.List> mWeatherForecasts;
     private City mCity;
-    private Forecast mForecast;
+    private WeatherSearchResponse mForecast;
 
-    public WeatherPagerAdapter(FragmentManager fm, List<ForecastList> weatherForecast, City city, Forecast forecast){
+    public WeatherPagerAdapter(FragmentManager fm, List<com.example.weathertimeandroid.models.List> weatherForecast, City city, WeatherSearchResponse forecast){
         super(fm);
         mWeatherForecasts = weatherForecast;
         mCity = city;
@@ -26,7 +25,7 @@ public class WeatherPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position){
-        return WeatherDetailFragment.newInstance(mWeatherForecasts.get(position), mCity, mForecast);
+        return WeatherDetailFragment.newInstance((com.example.weathertimeandroid.models.List) mWeatherForecasts, mCity, mForecast);
     }
 
     @Override
@@ -36,7 +35,7 @@ public class WeatherPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position){
-        return mWeatherForecasts.get(position).getReadableDate();
+        return mWeatherForecasts.get(position).toString();
     }
 
 

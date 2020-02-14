@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        getSupportActionBar().hide();
 
         mCheckForecast.setOnClickListener(this);
     }
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v == mCheckForecast) {
             Intent intent = new Intent(MainActivity.this, WeatherListActivity.class);
             String mLocation = mLocationEditText.getText().toString();
-            Toast.makeText(MainActivity.this, "Location Nearby", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Location Weather", Toast.LENGTH_LONG).show();
 //            if(!(mLocation=="")){
 //                addToSharedPreferences(mLocation);
 //            }
