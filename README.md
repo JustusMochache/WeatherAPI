@@ -14,27 +14,7 @@ The application consumes Open Weather  API whereby the JSON objects are converte
 
 * Android Studio is the preferred IDE for Google's Android OS. It needs to be [installed](https://developer.android.com/studio#downloads)
 
-## Overview
 
-* On loading the application, a splash screen then the homepage is displayed
-
-     ![resize1](https://user-images.githubusercontent.com/25340965/74100637-5be6d280-4b42-11ea-8ca7-244ac4c92d15.jpg)
-
-* On click of the button at the bottom, an explicit intent is passed to open the next activity where popular cocktails and different drink categories are displayed
-
-     ![resize2](https://user-images.githubusercontent.com/25340965/74100651-791ba100-4b42-11ea-99a4-ce9a8ada38a4.jpg)
-
-* Clicking on a category passes an intent to open a custom fragment which displays the drinks under a category alongside their name
-
-     ![resize3](https://user-images.githubusercontent.com/25340965/74100663-9486ac00-4b42-11ea-8169-b1173920f0af.jpg)
-
-* A drink and its details, including ingredients and instructions to prepare it can be viewed by clicking on the card holding the drink
-
-     ![resize4](https://user-images.githubusercontent.com/25340965/74100689-c13ac380-4b42-11ea-8afc-659cce2932fe.jpg)
-
-* An implicit intent is used to share a drink name, its recipe and how to prepare it on social media.
-
-     ![resize5](https://user-images.githubusercontent.com/25340965/74100699-cf88df80-4b42-11ea-8fe9-0a3d9246bf22.jpg)
 
 ## Installation
 
