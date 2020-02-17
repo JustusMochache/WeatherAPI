@@ -47,14 +47,20 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
         holder.bindWeatherForecast(mWeatherForecasts.get(position));
     }
 
+//
+//    Resources res = getResources();
+//    Drawable drawable = ResourcesCompat.getDrawable(res, R.drawable.myimage, null);
+
+
+
+
     @Override
     public int getItemCount(){
         return mWeatherForecasts.size();
     }
 
     public class WeatherViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        @BindView(R.id.weatherImageView)
-        ImageView mWeatherImageView;
+        @BindView(R.id.weatherImageView) ImageView mWeatherImageView;
         @BindView(R.id.mainWeatherTextView) TextView mMainWeatherTextView;
         @BindView(R.id.temperatureTextView) TextView mMaintemparatureTextView;
         @BindView(R.id.timeTextView)
@@ -70,10 +76,20 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
         }
 
         public void bindWeatherForecast(com.example.weathertimeandroid.models.List forecastList){
-            //Picasso.get().load(forecastList.g()).into(mWeatherImageView);
-            mMainWeatherTextView.setText(forecastList.getWeather().get(0).getMain());
-            mMaintemparatureTextView.setText("Average Temperatures of: "+forecastList.toString());
-            mTimeTextView.setText(forecastList.getDt());
+
+
+
+                //  Picasso.get().load(forecastList.getWeather().get(0).getIcon()).into(mWeatherImageView);
+
+                mMainWeatherTextView.setText(forecastList.getWeather().get(0).getMain());
+                mMaintemparatureTextView.setText("Temperatures: "+forecastList.getMain().getTemp() + " Celsius");
+                mTimeTextView.setText(forecastList.getDtTxt());
+
+
+//            Picasso.get().load(forecastList.getWeather().get(0).getIcon()).into(mWeatherImageView);
+//            mMainWeatherTextView.setText(forecastList.getWeather().get(0).getMain());
+//            mMaintemparatureTextView.setText("Average Temperatures of: "+forecastList.toString());
+//            mTimeTextView.setText(forecastList.getDtTxt());
         }
 
         @Override

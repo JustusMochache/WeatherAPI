@@ -5,6 +5,10 @@ import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+
+@Parcel
 public class Main implements Serializable
 {
 
@@ -31,10 +35,10 @@ public class Main implements Serializable
     private Integer grndLevel;
     @SerializedName("humidity")
     @Expose
-    private Integer humidity;
+    private Double humidity;
     @SerializedName("temp_kf")
     @Expose
-    private Integer tempKf;
+    private Double tempKf;
     private final static long serialVersionUID = 8749640293513047160L;
 
     /**
@@ -56,7 +60,7 @@ public class Main implements Serializable
      * @param grndLevel
      * @param tempMin
      */
-    public Main(Double temp, Double feelsLike, Double tempMin, Double tempMax, Integer pressure, Integer seaLevel, Integer grndLevel, Integer humidity, Integer tempKf) {
+    public Main(Double temp, Double feelsLike, Double tempMin, Double tempMax, Integer pressure, Integer seaLevel, Integer grndLevel, Double humidity, Double tempKf) {
         super();
         this.temp = temp;
         this.feelsLike = feelsLike;
@@ -125,19 +129,19 @@ public class Main implements Serializable
         this.grndLevel = grndLevel;
     }
 
-    public Integer getHumidity() {
+    public Double getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(Integer humidity) {
+    public void setHumidity(Double humidity) {
         this.humidity = humidity;
     }
 
-    public Integer getTempKf() {
+    public Double getTempKf() {
         return tempKf;
     }
 
-    public void setTempKf(Integer tempKf) {
+    public void setTempKf(Double tempKf) {
         this.tempKf = tempKf;
     }
 

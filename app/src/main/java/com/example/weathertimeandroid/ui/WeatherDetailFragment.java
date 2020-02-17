@@ -30,8 +30,7 @@ public class WeatherDetailFragment extends Fragment implements View.OnClickListe
 
     @BindView(R.id.fragmentTemperatureTextView)
     TextView mFragmentTemparatureTextView;
-    @BindView(R.id.iconImageView)
-    ImageView mIconView;
+    @BindView(R.id.iconImageView) ImageView mIconView;
     @BindView(R.id.descriptionTextView) TextView mDescriptionTextView;
     @BindView(R.id.cityNameTextView) TextView mCityNameTextView;
     @BindView(R.id.populationTextView) TextView mPopulationTextView;
