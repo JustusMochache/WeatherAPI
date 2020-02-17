@@ -13,7 +13,7 @@
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="@+id/checkForeCast"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/weatherbg" />
+        app:srcCompat="@drawable/weather" />
 
 
     <TextView
