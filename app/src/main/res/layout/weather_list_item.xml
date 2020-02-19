@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="horizontal"
-    android:layout_height="175dp"
+    android:layout_height="200dp"
     android:layout_marginTop="16dp"
     >
 
@@ -17,7 +17,7 @@
         android:contentDescription="@string/icon"
         android:scaleType="centerCrop"
 
-        android:src="@drawable/weatherico"
+        android:src="@drawable/appleweather"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/temperatureTextView"
         app:layout_constraintHorizontal_bias="0.219"
