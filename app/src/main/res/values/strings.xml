@@ -2,13 +2,12 @@
     <string name="app_name">Weather Time</string>
 
 
-
     <!-- add string for setIconResource  setIconResource(weatherIconResource)-->
 
     <string name="setIconResource">weatherIconResource</string>
 
 
-<!--    add string for open weather-->
+    <!--    add string for open weather-->
     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <string name="action_map">Map Location</string>
     <!-- Used to share the weather forecast on a given day from the DetailActivity -->

@@ -2,4 +2,5 @@
 <resources>
     <item name="locationTextView" type="id" />
     <item name="listView" type="id" />
+    <item name="sign_out_menu" type="id" />
 </resources>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "939400228073",
+    "firebase_url": "https://weathertimeandroid.firebaseio.com",
+    "project_id": "weathertimeandroid",
+    "storage_bucket": "weathertimeandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939400228073:android:bd7eb4c8bb1f6e17135478",
+        "android_client_info": {
+          "package_name": "com.example.weathertimeandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "939400228073-mc1k1g5lg53jjmj43041l08udokdbist.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDb_vKZGWXNDimRN0H67uTd0Ova7EFrb-w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "939400228073-mc1k1g5lg53jjmj43041l08udokdbist.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

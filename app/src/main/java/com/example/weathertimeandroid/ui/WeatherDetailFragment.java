@@ -2,6 +2,7 @@ package com.example.weathertimeandroid.ui;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,11 +13,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.weathertimeandroid.R;
+import com.example.weathertimeandroid.constants.Constants;
 import com.example.weathertimeandroid.models.City;
 import com.example.weathertimeandroid.models.List;
 import com.example.weathertimeandroid.models.WeatherSearchResponse;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -102,7 +107,13 @@ public class WeatherDetailFragment extends Fragment implements View.OnClickListe
                 startActivity(webMapIntent);
                 break;
 
-
+            case R.id.button:
+                DatabaseReference weatherForecastFbase = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_FORECAST);
+                weatherForecastFbase.push().setValue(forecast);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+                }
+                break;
         }
     }
 
