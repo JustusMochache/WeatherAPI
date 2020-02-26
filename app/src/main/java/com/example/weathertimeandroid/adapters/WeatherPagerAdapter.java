@@ -25,7 +25,7 @@ public class WeatherPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position){
-        return WeatherDetailFragment.newInstance((com.example.weathertimeandroid.models.List) mWeatherForecasts, mCity, mForecast);
+        return WeatherDetailFragment.newInstance(mWeatherForecasts, mCity, mForecast);
     }
 
     @Override

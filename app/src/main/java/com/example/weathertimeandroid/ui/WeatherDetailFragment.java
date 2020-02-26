@@ -47,11 +47,11 @@ public class WeatherDetailFragment extends Fragment implements View.OnClickListe
     Button mSaveButton;
 
     private WeatherSearchResponse forecast;
-    private List weatherForecast;
+    private java.util.List<List> weatherForecast;
     private City city;
 
 
-    public static androidx.fragment.app.Fragment newInstance(List mForecastList, City mCity, WeatherSearchResponse mForecast){
+    public static androidx.fragment.app.Fragment newInstance(java.util.List<List> mForecastList, City mCity, WeatherSearchResponse mForecast){
         WeatherDetailFragment weatherDetailFragment = new WeatherDetailFragment();
         Bundle args = new Bundle();
         args.putParcelable("forecast", Parcels.wrap(mForecast));
@@ -81,16 +81,15 @@ public class WeatherDetailFragment extends Fragment implements View.OnClickListe
         View view = inflater.inflate(R.layout.fragment_weather_detail, container, false);
         ButterKnife.bind(this, view);
 
-
-        Picasso.get().load(weatherForecast.getWeather().get(0).getIcon()).into(mIconView);
+        Picasso.get().load(weatherForecast.get(0).getWeather().get(0).getIcon()).into(mIconView);
         mLocationCoordinates.setText(city.getCoord().toString());
-        mFragmentTemparatureTextView.setText(Double.toString(weatherForecast.getMain().getTemp()));
-        mDescriptionTextView.setText(weatherForecast.getWeather().get(0).getDescription());
+        mFragmentTemparatureTextView.setText(Double.toString(weatherForecast.get(0).getMain().getTemp()));
+        mDescriptionTextView.setText(weatherForecast.get(0).getWeather().get(0).getDescription());
         mCityNameTextView.setText(city.getName());
         mPopulationTextView.setText(city.getCountry());
-        mMinimumTemperature.setText(Double.toString(weatherForecast.getMain().getTempMin()));
-        mMaximumTemperatureTextView.setText(Double.toString(weatherForecast.getMain().getTempMax()));
-        mWindSpeedTextView.setText(Double.toString(weatherForecast.getWind().getSpeed()));
+        mMinimumTemperature.setText(Double.toString(weatherForecast.get(0).getMain().getTempMin()));
+        mMaximumTemperatureTextView.setText(Double.toString(weatherForecast.get(0).getMain().getTempMax()));
+        mWindSpeedTextView.setText(Double.toString(weatherForecast.get(0).getWind().getSpeed()));
         mLocationCoordinates.setOnClickListener(this);
         mSaveButton.setOnClickListener(this);
 
