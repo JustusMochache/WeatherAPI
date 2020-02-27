@@ -1,253 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    app:cardCornerRadius="10dp"
-    android:background="#cecece"
     android:layout_width="match_parent"
-    tools:context=".ui.WeatherDetailFragment">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/blue"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/fragmentTemperatureTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
             android:text="@string/deg"
-            android:textColor="@color/colorTextIcons"
-            android:textSize="50sp" />
+            android:textColor="@color/colorPrimary"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/description"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fragmentTemperatureTextView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_one"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="2dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/card_two"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragmentTemperatureTextView">
 
             <ImageView
                 android:id="@+id/iconImageView"
-                android:layout_width="84dp"
+                android:layout_width="74dp"
                 android:layout_height="74dp"
+                android:layout_gravity="center|top"
                 android:layout_marginBottom="4dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/sun" />
+                android:background="@drawable/city" />
 
             <TextView
-                android:id="@+id/descriptionTextView"
-                android:layout_width="wrap_content"
+                android:id="@+id/cityNameTextView"
+                android:layout_width="76dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="27dp"
-                android:text="@string/description"
-                android:textColor="#fff" />
-        </LinearLayout>
+                android:layout_gravity="center"
+                android:paddingTop="12dp"
+                android:text="@string/city"
+                android:textAlignment="center"
+                android:textColor="#000" />
+        </androidx.cardview.widget.CardView>
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_two"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/card_one"
+            app:layout_constraintTop_toBottomOf="@+id/fragmentTemperatureTextView">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:background="#33000000"
-            android:paddingLeft="30dp"
-            android:paddingTop="20dp">
+            <ImageView
+                android:id="@+id/iconImageView_1"
+                android:layout_width="74dp"
+                android:layout_height="74dp"
+                android:layout_gravity="center|top"
+                android:layout_marginBottom="4dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/population" />
 
-            <LinearLayout
-                android:id="@+id/cityHolderLinearLayout"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/populationTextView"
+                android:layout_width="76dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="28dp"
-                android:layout_marginRight="28dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="@+id/populationHolderLinearLayout"
-                app:layout_constraintEnd_toStartOf="@+id/populationHolderLinearLayout"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/populationHolderLinearLayout">
+                android:layout_gravity="center"
+                android:paddingTop="12dp"
+                android:text="@string/population"
+                android:textAlignment="center"
+                android:textColor="#000" />
 
-                <TextView
-                    android:layout_width="47dp"
-                    android:layout_height="47dp"
-                    android:background="@drawable/city"
-                    android:scaleType="centerCrop" />
+        </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:id="@+id/cityNameTextView"
-                    android:layout_width="76dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="5dp"
-                    android:text="@string/city"
-                    android:textColor="#fff" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_three"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="@+id/card_one"
+            app:layout_constraintStart_toStartOf="@+id/card_one"
+            app:layout_constraintTop_toBottomOf="@+id/card_one">
 
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/iconImageView2"
+                android:layout_width="74dp"
+                android:layout_height="74dp"
+                android:layout_gravity="center|top"
+                android:layout_marginBottom="4dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/mintemp" />
 
-            <LinearLayout
-                android:id="@+id/populationHolderLinearLayout"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/minimumTemparatureTextView"
+                android:layout_width="76dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="18dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toTopOf="@+id/maxTempHolderLinearLayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/cityHolderLinearLayout"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_gravity="center"
+                android:paddingTop="12dp"
+                android:text="@string/mintemp"
+                android:textAlignment="center"
+                android:textColor="#000" />
+        </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:layout_width="47dp"
-                    android:layout_height="47dp"
-                    android:background="@drawable/population"
-                    android:scaleType="centerCrop" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_two2"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/card_one"
+            app:layout_constraintTop_toBottomOf="@+id/card_two">
 
-                <TextView
-                    android:id="@+id/populationTextView"
-                    android:layout_width="76dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="5dp"
-                    android:text="@string/population"
-                    android:textColor="#fff" />
+            <ImageView
+                android:id="@+id/iconImageView2_1"
+                android:layout_width="74dp"
+                android:layout_height="74dp"
+                android:layout_gravity="center|top"
+                android:layout_marginBottom="4dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/maxtemp" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/minTempHolderLinearLayout"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/maximumTemparatureTextView"
+                android:layout_width="76dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:layout_marginRight="1dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toStartOf="@+id/maxTempHolderLinearLayout"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/maxTempHolderLinearLayout">
+                android:layout_gravity="center"
+                android:paddingTop="12dp"
+                android:text="@string/maxtemp"
+                android:textAlignment="center"
+                android:textColor="#000" />
 
-                <TextView
-                    android:layout_width="47dp"
-                    android:layout_height="47dp"
-                    android:background="@drawable/mintemp"
-                    android:scaleType="centerCrop" />
 
-                <TextView
-                    android:id="@+id/minimumTemparatureTextView"
-                    android:layout_width="76dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="5dp"
-                    android:text="@string/mintemp"
-                    android:textColor="#fff" />
+        </androidx.cardview.widget.CardView>
 
-            </LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_five"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="@+id/card_three"
+            app:layout_constraintStart_toStartOf="@+id/card_three"
+            app:layout_constraintTop_toBottomOf="@+id/card_three">
 
-            <LinearLayout
-                android:id="@+id/maxTempHolderLinearLayout"
-                android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/iconImageView3"
+                android:layout_width="74dp"
+                android:layout_height="74dp"
+                android:layout_gravity="center|top"
+                android:layout_marginBottom="4dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/windspeed" />
+
+            <TextView
+                android:id="@+id/windSpeedTextView"
+                android:layout_width="76dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="13dp"
-                android:layout_marginEnd="11dp"
-                android:layout_marginRight="11dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toTopOf="@+id/windSpeedHolder"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/minTempHolderLinearLayout"
-                app:layout_constraintTop_toBottomOf="@+id/populationHolderLinearLayout">
+                android:layout_gravity="center"
+                android:paddingTop="12dp"
+                android:text="@string/windspeed"
+                android:textAlignment="center"
+                android:textColor="#000" />
+        </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:layout_width="47dp"
-                    android:layout_height="47dp"
-                    android:background="@drawable/maxtemp"
-                    android:scaleType="centerCrop" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_two4"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="@+id/card_two2"
+            app:layout_constraintStart_toStartOf="@+id/card_two2"
+            app:layout_constraintTop_toBottomOf="@+id/card_two2">
 
-                <TextView
-                    android:id="@+id/maximumTemparatureTextView"
-                    android:layout_width="76dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="5dp"
-                    android:text="@string/maxtemp"
-                    android:textColor="#fff" />
+            <ImageView
+                android:id="@+id/iconImageView2_4"
+                android:layout_width="74dp"
+                android:layout_height="74dp"
+                android:layout_gravity="center|top"
+                android:layout_marginBottom="4dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/map" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/windSpeedHolder"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/coordinatesTextView"
+                android:layout_width="76dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="23dp"
-                android:layout_marginLeft="46dp"
-                android:layout_marginRight="23dp"
-                android:layout_marginStart="46dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/coordinatesHolder"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/maxTempHolderLinearLayout">
-
-                <TextView
-                    android:layout_width="47dp"
-                    android:layout_height="47dp"
-                    android:background="@drawable/windspeed"
-                    android:scaleType="centerCrop" />
-
-                <TextView
-                    android:id="@+id/windSpeedTextView"
-                    android:layout_width="76dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="5dp"
-                    android:text="@string/windspeed"
-                    android:textColor="#fff" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/coordinatesHolder"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:layout_marginEnd="13dp"
-                android:layout_marginRight="13dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/windSpeedHolder">
-
-                <TextView
-                    android:layout_width="47dp"
-                    android:layout_height="47dp"
-                    android:background="@drawable/map"
-                    android:scaleType="centerCrop" />
-
-                <TextView
-                    android:id="@+id/coordinatesTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="5dp"
-                    android:text="@string/coord"
-                    android:textColor="#fff" />
-
-            </LinearLayout>
+                android:layout_gravity="center"
+                android:paddingTop="12dp"
+                android:text="map"
+                android:textAlignment="center"
+                android:textColor="#000" />
 
 
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#A5FF33"
-            android:text="Save Weather" />
+            android:layout_marginTop="24dp"
+            android:background="#4CAF50"
+            android:text="Save Weather"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_five" />
 
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
